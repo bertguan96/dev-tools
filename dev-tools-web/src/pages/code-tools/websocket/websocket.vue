@@ -31,9 +31,17 @@ const wsUrl = ref('ws://127.0.0.1:8080/websocket')
 const message = ref('')
 
 const disabled = ref(false)
+const isWsConnected = ref(false)
 const factory = WebsocketFactory.getInstance();
 
 onMounted(() => {
+  // 定时获取判断ws是否链接
+  const setIntervalHandler = setInterval(() => {
+      if (factory.isConnected()) {
+        isWsConnected.value = true
+        clearInterval(setIntervalHandler)
+      }
+  }, 100)
 });
 const connect = () => {
   try {

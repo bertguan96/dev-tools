@@ -37,24 +37,38 @@ export class WebsocketFactory {
         this.websocket = new WebSocket(url);
     }
 
-    public checkConnect() {
+    public addListener(readMessage: (msg: string) => void) {
+        if (this.websocket) {
+            this.websocket.onmessage = (event: MessageEvent) =>  {
+                readMessage(event.data)
+            };
+            this.websocket.onclose = (event: CloseEvent) =>  {
+                readMessage(event.reason)
+            };
+            this.websocket.onopen = (event: Event) => {
+                console.log(event)
+            }
+            this.websocket.onerror = (event: Event) => {
+                console.error(event)
+            }
+        }
+    }
+
+    public checkConnect(readMessage: (msg: string, type: string) => void) {
         const setIntervalHandler = setInterval(() => {
             if (this.websocket && this.websocket.readyState == 1 ) {
                 console.log("链接成功")
                 clearInterval(setIntervalHandler)
-                this.websocket.onopen = (event: Event) => {
-                    console.log(event)
-                }
             }
         }, 100)
     }
 
-    public onMessage(readMessage: (msg: string) => void) {
+    public onMessage(message: string) {
         if (this.websocket) {
-            this.websocket.send("1111")
-            this.websocket.onmessage = (event: MessageEvent) =>  {
-                console.log(event.data)
-            };
+            // 发送消息
+            this.websocket.send(message)
+        } else {
+
         }
     }
 
