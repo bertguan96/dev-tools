@@ -54,7 +54,7 @@ export class WebsocketFactory {
         }
     }
 
-    public checkConnect(readMessage: (msg: string, type: string) => void) {
+    public checkConnect() {
         const setIntervalHandler = setInterval(() => {
             if (this.websocket && this.websocket.readyState == 1 ) {
                 console.log("链接成功")
@@ -67,8 +67,6 @@ export class WebsocketFactory {
         if (this.websocket) {
             // 发送消息
             this.websocket.send(message)
-        } else {
-
         }
     }
 
