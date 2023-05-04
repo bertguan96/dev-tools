@@ -8,10 +8,18 @@ import {basicSetup, EditorView} from "codemirror";
 import {EditorState, EditorStateConfig} from "@codemirror/state";
 import {javascript} from "@codemirror/lang-javascript";
 import {json} from '@codemirror/lang-json'
+import {html} from "@codemirror/lang-html";
+import {tags} from "@lezer/highlight"
+import {HighlightStyle, syntaxHighlighting} from "@codemirror/language"
 import {onMounted, ref} from "vue";
 
 const editorRef = ref();
 const editorView = ref();
+
+const myHighlightStyle = HighlightStyle.define([
+  {tag: tags.keyword, color: "#fc6"},
+  {tag: tags.comment, color: "#f5d", fontStyle: "italic"}
+])
 
 const editorStateConfig = ref({})
 
@@ -21,14 +29,17 @@ const initEditor = () => {
   }
   editorStateConfig.value = {
     doc: '',
-    extensions: [basicSetup, javascript(), json()],
+    extensions: [
+      basicSetup, javascript(), json(), html(),
+      syntaxHighlighting(myHighlightStyle)
+
+    ],
   } as EditorStateConfig
   const startState = EditorState.create(editorStateConfig.value);
   if (editorRef.value) {
     editorView.value = new EditorView({
       state: startState,
       parent: editorRef.value,
-
     });
   }
 };

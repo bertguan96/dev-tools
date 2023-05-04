@@ -72,6 +72,15 @@ const homeRouter = [
     },
     component: () => import("../../pages/code-tools/websocket/websocket.vue"),
   },
+  {
+    path: "/copyPaste",
+    name: "copyPaste",
+    meta: {
+      name: "copyPaste",
+    },
+    component: () => import("../../pages/code-tools/copy-paste/copypaste.vue"),
+
+  }
 ];
 
 

@@ -46,6 +46,9 @@ export const BertHeader = defineComponent({
             <t-menu-item value='3-2'>
               <div onClick={onBtnClick.bind(this, 'websocket')}>Websocket测试</div>
             </t-menu-item>
+            <t-menu-item value='3-3'>
+              <div onClick={onBtnClick.bind(this, 'copyPaste')}>剪切板解析</div>
+            </t-menu-item>
           </t-submenu>
           <t-submenu value="4" title="加密解密">
             <t-menu-item value='4-1'>

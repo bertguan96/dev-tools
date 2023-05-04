@@ -22,7 +22,7 @@ export class WebsocketFactory {
 
     private websocket: WebSocket | undefined;
 
-    private isConnect: boolean = false;
+    private lockNumber: number = 0;
 
     private WebsocketTools(){}
 
@@ -34,7 +34,11 @@ export class WebsocketFactory {
     }
 
     public newConnect(url: string) {
-        this.websocket = new WebSocket(url);
+        try {
+            this.websocket = new WebSocket(url);
+        } catch (e: any) {
+            console.error(e)
+        }
     }
 
     public addListener(readMessage: (msg: string) => void) {
@@ -54,12 +58,18 @@ export class WebsocketFactory {
         }
     }
 
-    public checkConnect() {
+    public checkConnect(lock: () => void) {
         const setIntervalHandler = setInterval(() => {
+            if (this.lockNumber > 3) {
+                clearInterval(setIntervalHandler)
+                return
+            }
             if (this.websocket && this.websocket.readyState == 1 ) {
                 console.log("链接成功")
                 clearInterval(setIntervalHandler)
+                lock()
             }
+            this.lockNumber++;
         }, 100)
     }
 
