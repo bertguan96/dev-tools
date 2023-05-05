@@ -35,7 +35,7 @@
 <script lang="ts" setup>
 
 import {onMounted, ref} from "vue";
-import {WebsocketFactory} from "@/pages/code-tools/websocket/websocket_factory";
+import {Websocket_factory} from "@/pages/code_tools/websocket/websocket_factory";
 import {MessagePlugin} from "tdesign-vue-next";
 
 const wsUrl = ref('')
@@ -43,7 +43,7 @@ const message = ref('')
 
 const disabled = ref(false)
 const isWsConnected = ref(false)
-const factory = WebsocketFactory.getInstance();
+const factory = Websocket_factory.getInstance();
 
 onMounted(() => {
   // 定时获取判断ws是否链接

@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
 import { Textarea } from 'tdesign-vue-next';
-import CodeEditor from '@/components/codemirror/CodeEditor.vue';
+import CodeEditor from '@/components/codemirror/code_editor.vue';
 import {ref} from "vue";
 
 const jsonStr = ref('')

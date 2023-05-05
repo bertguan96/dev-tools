@@ -16,9 +16,9 @@
 //     return websocket;
 // }
 
-export class WebsocketFactory {
+export class Websocket_factory {
 
-    private  static WebsocketConn: WebsocketFactory;
+    private  static WebsocketConn: Websocket_factory;
 
     private websocket: WebSocket | undefined;
 
@@ -26,9 +26,9 @@ export class WebsocketFactory {
 
     private WebsocketTools(){}
 
-    public static getInstance(): WebsocketFactory {
+    public static getInstance(): Websocket_factory {
         if (!this.WebsocketConn) {
-            this.WebsocketConn = new WebsocketFactory()
+            this.WebsocketConn = new Websocket_factory()
         }
         return this.WebsocketConn
     }

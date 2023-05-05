@@ -26,7 +26,7 @@
 <script lang='ts' setup>
 import {MessagePlugin, Textarea} from 'tdesign-vue-next';
 import {ref} from 'vue';
-import CodeEditor from '@/components/codemirror/CodeEditor.vue';
+import CodeEditor from '@/components/codemirror/code_editor.vue';
 import {ClipboardTools} from '@/tools/clipboard';
 
 

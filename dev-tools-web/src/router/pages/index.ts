@@ -46,7 +46,7 @@ const homeRouter = [
     meta: {
       name: "diffCode",
     },
-    component: () => import("../../pages/code-tools/diff/index.vue"),
+    component: () => import("../../pages/code_tools/diff/index.vue"),
   },
   {
     path: "/urlCode",
@@ -70,7 +70,7 @@ const homeRouter = [
     meta: {
       name: "websocket",
     },
-    component: () => import("../../pages/code-tools/websocket/websocket.vue"),
+    component: () => import("../../pages/code_tools/websocket/websocket.vue"),
   },
   {
     path: "/copyPaste",
@@ -78,8 +78,15 @@ const homeRouter = [
     meta: {
       name: "copyPaste",
     },
-    component: () => import("../../pages/code-tools/copy-paste/copypaste.vue"),
-
+    component: () => import("../../pages/code_tools/copy_paste/copy_paste.vue"),
+  },
+  {
+    path: "/gormGenerator",
+    name: "gormGenerator",
+    meta: {
+      name: "gormGenerator",
+    },
+    component: () => import("../../pages/code_tools/gorm_code_generator/index.vue"),
   }
 ];
 
