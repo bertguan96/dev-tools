@@ -2,8 +2,8 @@
   <t-card bordered :style="{ height: '600px' }">
     <t-row :gutter="16">
       <t-col :span="7">
-        <t-card bordered :style="{ height: '550px' }" title="输出区">
-          <div id="input" contenteditable="true"></div>
+        <t-card bordered :style="{ height: '550px' }" class="output" title="输出区">
+          <div id="input" class="hljs" contenteditable="true"></div>
         </t-card>
       </t-col>
       <t-col :span="5">
@@ -11,28 +11,31 @@
           <div>
             <t-form ref="form" :rules="FORM_RULES" :data="formData" :colon="true" @reset="onReset" @submit="onSubmit">
               <t-form-item label="结构体" name="struct">
-                <t-textarea :autosize="{ minRows: 5, maxRows: 5 }" v-model="formData.struct" placeholder="请输入结构体"
-                            @enter="onEnter"></t-textarea>
+                <t-textarea :autosize="{ minRows: 5, maxRows: 5 }"
+                            v-model="formData.struct" placeholder="请输入结构体"
+                            @change="getTableName"
+                            ></t-textarea>
               </t-form-item>
               <t-form-item label="表名" name="tableName">
-                <t-input v-model="formData.tableName" placeholder="请输入表名" @enter="onEnter"></t-input>
+                <t-input v-model="formData.tableName" placeholder="请输入表名" ></t-input>
               </t-form-item>
               <t-form-item label="生成类型" name="generatorType">
-                <t-select v-model="formData.generatorType" @change="onEnter" clearable>
-                  <t-option key="create" label="创建" value="create" />
-                  <t-option key="add" label="新增" value="add"/>
-                  <t-option key="delete" label="删除" value="delete" />
-                  <t-option key="select" label="查询" value="select" />
-                  <t-option key="update" label="修改" value="update" />
+                <t-select v-model="formData.generatorType" clearable>
+                  <t-option key="create" label="创建" value="CREATE"/>
+                  <t-option key="add" label="新增" value="ADD"/>
+                  <t-option key="delete" label="删除" value="DELETE"/>
+                  <t-option key="select" label="查询" value="SELECT"/>
+                  <t-option key="update" label="修改" value="UPDATE"/>
                 </t-select>
               </t-form-item>
               <t-form-item label="配置" name="config">
-                <t-checkbox-group v-model="formData.config" :options="configList" @change="onEnter"></t-checkbox-group>
+                <t-checkbox-group v-model="formData.config" :options="configList"></t-checkbox-group>
               </t-form-item>
               <t-form-item>
                 <t-space size="small">
                   <t-button theme="primary" type="submit">生成</t-button>
                   <t-button theme="default" variant="base" type="reset">重置</t-button>
+                  <t-button theme="success" variant="base" @click="copyCode">复制</t-button>
                 </t-space>
               </t-form-item>
             </t-form>
@@ -44,15 +47,22 @@
 </template>
 
 <script setup lang="ts">
-import {ref, reactive} from 'vue';
+import {ref, reactive, onMounted} from 'vue';
 import {MessagePlugin} from 'tdesign-vue-next';
+import {FormData} from "@/pages/code_tools/gorm_code_generator/data";
+import {CodeHandler, parseGoStruct, toSnakeCase} from "@/pages/code_tools/gorm_code_generator/code_handler";
+import {html_beautify} from "js-beautify";
+import 'highlight.js/styles/monokai-sublime.css'
+import hljs from "highlight.js";
+import go from 'highlight.js/lib/languages/go';
+import {ClipboardTools} from "@/tools/clipboard";
 
 const FORM_RULES = {
   struct: [{required: true, message: '结构体为必填项'}],
   generatorType: [{required: true, message: '生成类型为必填项'}],
 };
 
-const formData = reactive({
+const formData: FormData = reactive({
   struct: '',
   generatorType: '',
   tableName: '',
@@ -60,6 +70,23 @@ const formData = reactive({
 });
 
 const form = ref(null);
+const outputCode = ref('');
+
+const getTableName = () => {
+  const structs = parseGoStruct(formData.struct);
+  for (let key of Object.keys(structs)) {
+    formData.tableName = toSnakeCase(key);
+  }
+};
+
+const copyCode = () => {
+  if (outputCode.value === "") {
+      MessagePlugin.warning("请先生成代码。");
+      return;
+  }
+  ClipboardTools.writeToClipboard(outputCode.value);
+  return;
+};
 
 // 配置列表
 const configList = [
@@ -68,60 +95,47 @@ const configList = [
 
 const onReset = () => {
   MessagePlugin.success('重置成功');
+  form.value = null;
 };
 
-const onSubmit = ({validateResult, firstError}) => {
-  if (validateResult === true) {
-    MessagePlugin.success('提交成功');
-  } else {
-    console.log('Validate Errors: ', firstError, validateResult);
-    MessagePlugin.warning(firstError);
+onMounted(() => {
+  hljs.registerLanguage('go', go);
+});
+
+const onSubmit = () => {
+  MessagePlugin.success('提交成功');
+  let code = CodeHandler.doHandler(formData)[0];
+  const input = document.getElementById('input');
+  if (input) {
+    outputCode.value = code;
+    input.innerHTML = `<pre>${code}</pre>`;
   }
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const submitForm = async () => {
-  form.value.submit();
-  form.value.submit({showErrorMessage: false});
-
-  // 校验数据，代码有效，勿删
-  // form.value.validate();
-
-  // 校验数据：只提交和校验，不在表单中显示错误文本信息。下方代码有效，勿删
-  // form.value.validate({ showErrorMessage: false }).then((validateResult) => {
-  //   if (validateResult && Object.keys(validateResult).length) {
-  //     const firstError = Object.values(validateResult)[0]?.[0]?.message;
-  //     MessagePlugin.warning(firstError);
-  //   }
-  // });
-};
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const resetForm = () => {
-  form.value.reset();
-  // 下方为示例代码，有效，勿删
-  // form.value.reset({ type: 'initial' });
-  // form.value.reset({ type: 'empty' });
-  // form.value.reset({ type: 'initial', fields: ['name'] });
-  // form.value.reset({ type: 'empty', fields: ['name'] });
-};
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const validateOnly = async () => {
-  const result = await form.value.validateOnly();
-  MessagePlugin.success('打开控制台查看校验结果');
-  console.log('validateOnly', result);
-};
-
-// 禁用 Input 组件，按下 Enter 键时，触发 submit 事件
-const onEnter = (_, {e}) => {
-  console.log(e)
-  console.log(form.value)
-  console.log(formData)
-  e.preventDefault();
-};
 </script>
 
 <style scoped>
-
+#input {
+  height: 100%;
+  display: flex;
+  width: 100%;
+  min-height: var(--td-comp-size-xxxl);
+  border: 1px solid var(--td-border-level-2-color);
+  border-radius: var(--td-radius-default);
+  padding: calc(calc(var(--td-comp-size-m) - var(--td-line-height-body-medium)) / 2) var(--td-comp-paddingLR-s);
+  font: var(--td-font-body-medium);
+  resize: vertical;
+  outline: none;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+.output /deep/.t-card__body {
+  height: 350px;
+}
+pre{
+  white-space:pre-wrap;
+  white-space:-moz-pre-wrap;
+  white-space:-o-pre-wrap;
+  word-wrap:break-word;
+}
 </style>

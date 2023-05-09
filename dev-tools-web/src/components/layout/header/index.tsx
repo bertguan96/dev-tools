@@ -61,6 +61,14 @@ export const BertHeader = defineComponent({
               <div onClick={onBtnClick.bind(this, 'base64')}>base64</div>
             </t-menu-item>
           </t-submenu>
+          {/*<t-submenu value="5" title="文章笔记">*/}
+          {/*  <t-menu-item value='5-1'>*/}
+          {/*    <div onClick={onBtnClick.bind(this, 'urlCode')}>Go源码分析</div>*/}
+          {/*  </t-menu-item>*/}
+          {/*  <t-menu-item value='5-2'>*/}
+          {/*    <div onClick={onBtnClick.bind(this, 'base64')}>base64</div>*/}
+          {/*  </t-menu-item>*/}
+          {/*</t-submenu>*/}
         </t-head-menu>
       </>
     )
