@@ -19,5 +19,5 @@ export default defineConfig({
     alias: {
       '@': join(__dirname, 'src'),  // 配置项目别名
     }
-  }
+  },
 })

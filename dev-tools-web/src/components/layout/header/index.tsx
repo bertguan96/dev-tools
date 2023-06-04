@@ -50,7 +50,10 @@ export const BertHeader = defineComponent({
               <div onClick={onBtnClick.bind(this, 'copyPaste')}>剪切板解析</div>
             </t-menu-item>
             <t-menu-item value='3-4'>
-              <div onClick={onBtnClick.bind(this, 'gormGenerator')}>gorm generator</div>
+              <div onClick={onBtnClick.bind(this, 'ExcelToSQL')}>表格转SQL</div>
+            </t-menu-item>
+            <t-menu-item value='3-5'>
+              <div onClick={onBtnClick.bind(this, 'random')}>随机字符生成器</div>
             </t-menu-item>
           </t-submenu>
           <t-submenu value="4" title="加密解密">
@@ -61,14 +64,13 @@ export const BertHeader = defineComponent({
               <div onClick={onBtnClick.bind(this, 'base64')}>base64</div>
             </t-menu-item>
           </t-submenu>
-          {/*<t-submenu value="5" title="文章笔记">*/}
-          {/*  <t-menu-item value='5-1'>*/}
-          {/*    <div onClick={onBtnClick.bind(this, 'urlCode')}>Go源码分析</div>*/}
-          {/*  </t-menu-item>*/}
-          {/*  <t-menu-item value='5-2'>*/}
-          {/*    <div onClick={onBtnClick.bind(this, 'base64')}>base64</div>*/}
-          {/*  </t-menu-item>*/}
-          {/*</t-submenu>*/}
+          <t-menu-item value='5'>
+            <div onClick={onBtnClick.bind(this, 'chat')}>
+              <t-link href="https://chat.bertguan.top" target="_blank">
+                Chat
+              </t-link>
+            </div>
+          </t-menu-item>
         </t-head-menu>
       </>
     )

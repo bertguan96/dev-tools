@@ -1,0 +1,13 @@
+.table-editor-row {
+    margin-bottom: 20px;
+}
+.table-editor-button {
+    width: 80px;
+    height: 80px;
+    margin-top: 10px;
+}
+
+.t-button__text {
+    white-space: normal;
+    font-size: 13px;
+}

@@ -1,0 +1,6 @@
+.table-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #d3cece;
+}
