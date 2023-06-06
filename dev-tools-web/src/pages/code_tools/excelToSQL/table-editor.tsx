@@ -16,6 +16,7 @@ export interface EditorOptions {
 
 interface Props {
     options: EditorOptions;
+    isEnabled: boolean;
 }
 
 
@@ -28,6 +29,10 @@ export const TableEditor = defineComponent({
         options: {
             type: Object as PropType<Props['options']>,
             default: null
+        },
+        isEnabled: {
+            type: Object as PropType<Props['isEnabled']>,
+            default: true
         }
     },
     setup(props) {
@@ -35,12 +40,13 @@ export const TableEditor = defineComponent({
             <>
                 <t-row class="table-editor-row">
                     {
-                        props.options && props.options.buttonConfig.map((config) => (
+                        props && props.options && props.options.buttonConfig.map((config) => (
                             <t-col
                                 span={config.colWidth}>
                                 <t-button theme="default" variant="outline"
                                           class="table-editor-button"
-                                          onClick={config.onClick.bind(this, config.key)}>{config.name}</t-button>
+                                          onClick={config.onClick.bind(this, config.key)}
+                                          disabled={props.isEnabled}>{config.name}</t-button>
                             </t-col>
                         ))
                     }

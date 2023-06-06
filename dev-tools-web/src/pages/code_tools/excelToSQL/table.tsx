@@ -66,7 +66,9 @@ export const ParseTable = defineComponent({
         return (props: { tableData: any; }) => (
             <>
                 {
-                    props.tableData ? <t-table
+                    props.tableData
+                    && props.tableData.header.length > 0
+                    && props.tableData.value.length ? <t-table
                         id='table'
                         bordered='bordered'
                         columns={getTableHeader()}

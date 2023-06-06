@@ -12,10 +12,12 @@ export class DataParse implements IParse {
     }
 }
 
-
 class ExcelParse {
     public parse(): ExcelDataParse {
         const sourceInput = document.getElementById('sourceInput')
+        if (sourceInput && sourceInput.textContent === '') {
+            return {header: [], value: []};
+        }
         if (sourceInput && sourceInput.childNodes) {
             const nodes = sourceInput.childNodes;
             const excelData: ExcelDataParse = {
@@ -35,7 +37,7 @@ class ExcelParse {
                 for (let i = 0; i < headerData.length; i++) {
                     const data = headerData[i];
                     if (data != "") {
-                        excelData.header.push(data)
+                        excelData.header.push(data.trim())
                     }
                 }
             }
