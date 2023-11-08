@@ -64,13 +64,13 @@ export const BertHeader = defineComponent({
               <div onClick={onBtnClick.bind(this, 'base64')}>base64</div>
             </t-menu-item>
           </t-submenu>
-          <t-menu-item value='5'>
+{/*          <t-menu-item value='5'>
             <div onClick={onBtnClick.bind(this, 'chat')}>
               <t-link href="https://chat.bertguan.top" target="_blank">
                 Chat
               </t-link>
             </div>
-          </t-menu-item>
+          </t-menu-item>*/}
         </t-head-menu>
       </>
     )
