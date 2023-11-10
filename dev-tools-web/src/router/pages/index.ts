@@ -65,6 +65,22 @@ const homeRouter = [
     component: () => import('../../pages/crypto/base64.vue'),
   },
   {
+    path: '/md5',
+    name: 'md5',
+    meta: {
+      name: 'md5',
+    },
+    component: () => import('../../pages/crypto/md5.vue'),
+  },
+  {
+    path: '/ciphey',
+    name: 'ciphey',
+    meta: {
+      name: 'ciphey',
+    },
+    component: () => import('../../pages/security/ciphey.vue'),
+  },
+  {
     path: '/websocket',
     name: 'websocket',
     meta: {
