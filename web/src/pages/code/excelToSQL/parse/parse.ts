@@ -1,5 +1,5 @@
-import {IParse} from "@/pages/code_tools/excelToSQL/parse/parse.interface";
-import {ExcelDataParse, ParseData} from "@/pages/code_tools/excelToSQL/parse/parse.data";
+import {IParse} from "@/pages/code/excelToSQL/parse/parse.interface";
+import {ExcelDataParse, ParseData} from "@/pages/code/excelToSQL/parse/parse.data";
 
 export class DataParse implements IParse {
 

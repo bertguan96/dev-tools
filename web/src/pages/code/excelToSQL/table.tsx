@@ -1,5 +1,5 @@
 import {defineComponent, onMounted, PropType, ref} from 'vue';
-import {ExcelDataParse} from '@/pages/code_tools/excelToSQL/parse/parse.data';
+import {ExcelDataParse} from '@/pages/code/excelToSQL/parse/parse.data';
 import './table.css'
 
 interface Props {

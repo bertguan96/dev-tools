@@ -46,7 +46,7 @@ const homeRouter = [
     meta: {
       name: 'diffCode',
     },
-    component: () => import('../../pages/code_tools/diff/index.vue'),
+    component: () => import('../../pages/code/diff/index.vue'),
   },
   {
     path: '/urlCode',
@@ -86,7 +86,7 @@ const homeRouter = [
     meta: {
       name: 'websocket',
     },
-    component: () => import('../../pages/code_tools/websocket/websocket.vue'),
+    component: () => import('../../pages/code/websocket/websocket.vue'),
   },
   {
     path: '/copyPaste',
@@ -94,7 +94,7 @@ const homeRouter = [
     meta: {
       name: 'copyPaste',
     },
-    component: () => import('../../pages/code_tools/copy_paste/copy_paste.vue'),
+    component: () => import('../../pages/code/copy_paste/copy_paste.vue'),
   },
   {
     path: '/random',
@@ -102,7 +102,7 @@ const homeRouter = [
     meta: {
       name: 'random',
     },
-    component: () => import('../../pages/code_tools/random/index.vue'),
+    component: () => import('../../pages/code/random/index.vue'),
   },
   {
     path: '/ExcelToSQL',
@@ -110,7 +110,7 @@ const homeRouter = [
     meta: {
       name: 'ExcelToSQL',
     },
-    component: () => import('../../pages/code_tools/excelToSQL/index.vue')
+    component: () => import('../../pages/code/excelToSQL/index.vue')
   }
 ];
 

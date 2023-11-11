@@ -1,4 +1,4 @@
-import {ExcelDataParse} from "@/pages/code_tools/excelToSQL/parse/parse.data";
+import {ExcelDataParse} from "@/pages/code/excelToSQL/parse/parse.data";
 
 
 function capitalizeFirstLetter(str: string) {

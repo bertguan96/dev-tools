@@ -39,7 +39,7 @@ export const BertHeader = defineComponent({
               <div onClick={onBtnClick.bind(this, 'tokens')}>token计算</div>
             </t-menu-item>
           </t-submenu>
-          <t-submenu value="3" title="编程辅助">
+          <t-submenu value="3" title="编码">
             <t-menu-item value='3-1'>
               <div onClick={onBtnClick.bind(this, 'diffCode')}>代码差异对比</div>
             </t-menu-item>
@@ -58,7 +58,7 @@ export const BertHeader = defineComponent({
           </t-submenu>
           <t-submenu value="4" title="加密解密">
             <t-menu-item value='4-1'>
-              <div onClick={onBtnClick.bind(this, 'urlCode')}>URL加密解密</div>
+              <div onClick={onBtnClick.bind(this, 'urlCode')}>url code</div>
             </t-menu-item>
             <t-menu-item value='4-2'>
               <div onClick={onBtnClick.bind(this, 'base64')}>base64</div>
@@ -67,24 +67,11 @@ export const BertHeader = defineComponent({
               <div onClick={onBtnClick.bind(this, 'md5')}>md5</div>
             </t-menu-item>
           </t-submenu>
-          <t-submenu value="5" title="安全工具">
+          <t-submenu value="5" title="安全">
             <t-menu-item value='5-1'>
-              <div onClick={onBtnClick.bind(this, 'urlCode')}>URL加密解密</div>
-            </t-menu-item>
-            <t-menu-item value='5-2'>
-              <div onClick={onBtnClick.bind(this, 'base64')}>base64</div>
-            </t-menu-item>
-            <t-menu-item value='5-3'>
-              <div onClick={onBtnClick.bind(this, 'md5')}>base64</div>
+              <div onClick={onBtnClick.bind(this, 'whois')}>whois</div>
             </t-menu-item>
           </t-submenu>
-{/*          <t-menu-item value='5'>
-            <div onClick={onBtnClick.bind(this, 'chat')}>
-              <t-link href="https://chat.bertguan.top" target="_blank">
-                Chat
-              </t-link>
-            </div>
-          </t-menu-item>*/}
         </t-head-menu>
       </>
     )

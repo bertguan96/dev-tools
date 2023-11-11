@@ -1,7 +1,7 @@
 <template>
   <t-row class="row-line" :gutter="16">
     <t-col :span="6">
-        URL编码加密解密
+        URL编码解码
     </t-col>
   </t-row>
   <t-row class="row-line" :gutter="16">
