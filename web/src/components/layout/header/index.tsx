@@ -68,8 +68,8 @@ export const BertHeader = defineComponent({
             </t-menu-item>
           </t-submenu>
           <t-submenu value="5" title="安全">
-            <t-menu-item value='5-1'>
-              <div onClick={onBtnClick.bind(this, 'whois')}>whois</div>
+            <t-menu-item value='5-1' href="http://114.55.97.220:801" target="_blank">
+            reverse-shell-generator
             </t-menu-item>
           </t-submenu>
         </t-head-menu>

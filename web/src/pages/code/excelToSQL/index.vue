@@ -46,9 +46,9 @@
 import {onMounted, onUnmounted, ref} from "vue";
 import {DataParse} from "./parse/parse";
 import {ParseTable} from "./table";
-import {EditorOptions, TableEditor} from "@/pages/code_tools/excelToSQL/table-editor";
-import {ExcelToSqlTools} from "@/pages/code_tools/excelToSQL/excel_to_sql_tools";
-import {ExcelDataParse} from "@/pages/code_tools/excelToSQL/parse/parse.data";
+import {EditorOptions, TableEditor} from "@/pages/code/excelToSQL/table-editor";
+import {ExcelToSqlTools} from "@/pages/code/excelToSQL/excel_to_sql_tools";
+import {ExcelDataParse} from "@/pages/code/excelToSQL/parse/parse.data";
 import {ClipboardTools} from "@/tools/clipboard";
 
 const model = ref('');

@@ -29,7 +29,7 @@ onMounted(() => {
     appContainer.style.height = `${app.clientHeight - appHeader.clientHeight - appFooter.clientHeight}px`;
   }
 
-})
+});
 
 </script>
 
@@ -48,4 +48,5 @@ onMounted(() => {
   height: 100%;
   width: 100%;
 }
+
 </style>

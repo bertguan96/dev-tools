@@ -35,7 +35,7 @@
 <script lang="ts" setup>
 
 import {onMounted, ref} from "vue";
-import {Websocket_factory} from "@/pages/code_tools/websocket/websocket_factory";
+import {Websocket_factory} from "@/pages/code/websocket/websocket_factory";
 import {MessagePlugin} from "tdesign-vue-next";
 
 const wsUrl = ref('')

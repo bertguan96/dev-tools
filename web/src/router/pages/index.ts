@@ -72,14 +72,14 @@ const homeRouter = [
     },
     component: () => import('../../pages/crypto/md5.vue'),
   },
-  {
-    path: '/ciphey',
-    name: 'ciphey',
-    meta: {
-      name: 'ciphey',
-    },
-    component: () => import('../../pages/security/ciphey.vue'),
-  },
+  // {
+  //   path: '/shellGen',
+  //   name: 'shellGen',
+  //   meta: {
+  //     name: 'shellGen',
+  //   },
+  //   component: () => import('../../pages/security/shell/gen.vue'),
+  // },
   {
     path: '/websocket',
     name: 'websocket',
