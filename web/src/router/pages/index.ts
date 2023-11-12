@@ -38,7 +38,15 @@ const homeRouter = [
     meta: {
       name: 'tokens',
     },
-    component: () => import('../../pages/openai/tokens.vue'),
+    component: () => import('../../pages/ai/openai/tokens.vue'),
+  },
+  {
+    path: '/bagWords',
+    name: 'bagWords',
+    meta: {
+      name: 'bagWords',
+    },
+    component: () => import('../../pages/ai/vec/bagwords/bag-words.vue'),
   },
   {
     path: '/diffCode',
