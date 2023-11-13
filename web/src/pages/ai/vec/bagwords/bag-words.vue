@@ -12,7 +12,9 @@
     </t-row>
     <t-row class="row-line" :gutter="16">
       <t-col :span="6">
-        <Input class="col-line "  v-model="urlCode" placeholder="请输入URLCode..."/>
+        <Textarea class="col-line "  v-model="urlCode" placeholder="请输入待计算的向量..."/>
+      </t-col>
+      <t-col :span="6">
         <Textarea v-model="normalStr"/>
       </t-col>
     </t-row>
