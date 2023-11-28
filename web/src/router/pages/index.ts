@@ -40,14 +40,14 @@ const homeRouter = [
     },
     component: () => import('../../pages/ai/openai/tokens.vue'),
   },
-  {
-    path: '/bagWords',
-    name: 'bagWords',
-    meta: {
-      name: 'bagWords',
-    },
-    component: () => import('../../pages/ai/vec/bagwords/bag-words.vue'),
-  },
+  // {
+  //   path: '/bagWords',
+  //   name: 'bagWords',
+  //   meta: {
+  //     name: 'bagWords',
+  //   },
+  //   component: () => import('../../pages/ai/vec/bagwords/bag-words.vue'),
+  // },
   {
     path: '/diffCode',
     name: 'diffCode',
@@ -80,14 +80,6 @@ const homeRouter = [
     },
     component: () => import('../../pages/crypto/md5.vue'),
   },
-  // {
-  //   path: '/shellGen',
-  //   name: 'shellGen',
-  //   meta: {
-  //     name: 'shellGen',
-  //   },
-  //   component: () => import('../../pages/security/shell/gen.vue'),
-  // },
   {
     path: '/websocket',
     name: 'websocket',

@@ -27,7 +27,8 @@
     "tdesign-vue-next": "^1.0.6",
     "vue": "^3.2.45",
     "vue-axios": "^3.5.2",
-    "vue-router": "^4.1.6"
+    "vue-router": "^4.1.6",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@codemirror/merge": "^6.0.1",

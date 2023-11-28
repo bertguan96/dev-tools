@@ -38,13 +38,13 @@ export const BertHeader = defineComponent({
             <t-menu-item value='2-1'>
               <div onClick={onBtnClick.bind(this, 'tokens')}>token计算</div>
             </t-menu-item>
-            <t-submenu value="2-2" title="词向量化">
-              <t-menu-item value="2-2-1">
-                <div onClick={onBtnClick.bind(this, 'bagWords')}>词集模型</div>
-              </t-menu-item>
-              {/* <t-menu-item value="2-2-2">词袋模型</t-menu-item>
-              <t-menu-item value="2-2-3">TD-IDF</t-menu-item> */}
-            </t-submenu>
+            {/*<t-submenu value="2-2" title="词向量化">*/}
+            {/*  <t-menu-item value="2-2-1">*/}
+            {/*    <div onClick={onBtnClick.bind(this, 'bagWords')}>词集模型</div>*/}
+            {/*  </t-menu-item>*/}
+            {/*  /!* <t-menu-item value="2-2-2">词袋模型</t-menu-item>*/}
+            {/*  <t-menu-item value="2-2-3">TD-IDF</t-menu-item> *!/*/}
+            {/*</t-submenu>*/}
           </t-submenu>
           <t-submenu value="3" title="编码">
             <t-menu-item value='3-1'>
