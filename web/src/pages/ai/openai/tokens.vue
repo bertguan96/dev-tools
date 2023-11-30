@@ -69,14 +69,14 @@ const priceMap: OpenAIPrice = {
 const onSelectChange = () => {
   const currentModel = model.value;
   if (currentModel !== "") {
-    price.value = priceMap[currentModel]["input"] * tokens.value + priceMap[currentModel]["output"] * outputTokenLen.value
+    price.value = priceMap[currentModel]["input"] * tokens.value/1000 + priceMap[currentModel]["output"] * outputTokenLen.value/1000
   }
 };
 
 const tokenChange = () => {
   const currentModel = model.value;
   if (currentModel !== "") {
-    price.value = priceMap[currentModel]["input"] * tokens.value + priceMap[currentModel]["output"] * outputTokenLen.value
+    price.value = priceMap[currentModel]["input"] * tokens.value/1000 + priceMap[currentModel]["output"] * outputTokenLen.value/1000
   }
 }
 
@@ -92,7 +92,7 @@ const onChange = (e: TextareaValue, context?: { e?: InputEvent | undefined; } | 
   tokens.value = encoded.length;
   const currentModel = model.value;
   if (currentModel !== "") {
-    price.value = priceMap[currentModel]["input"] * tokens.value + priceMap[currentModel]["output"] * outputTokenLen.value
+    price.value = priceMap[currentModel]["input"] * tokens.value/1000 + priceMap[currentModel]["output"] * outputTokenLen.value/1000
   }
 }
 </script>
